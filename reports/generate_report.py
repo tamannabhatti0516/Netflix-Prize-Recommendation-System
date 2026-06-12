@@ -223,6 +223,23 @@ HTML_CONTENT = """<!DOCTYPE html>
                 We evaluate all models on identical train-test splits. To assess recommendation list ranking, we evaluate Mean Average Precision at K (MAP@10) where a movie is defined as relevant if its actual rating is &ge; 3.5. Already seen training movies are excluded from candidates.
             </p>
 
+            <h3>5.1 Top-10 Recommendation Generation Procedure</h3>
+            <p>
+                The following procedure is executed to generate the Top-10 recommended movies for a user:
+            </p>
+            <ul>
+                <li><strong>Step 1</strong>: For a given user, retrieve all movies they rated in the training set (seen movies).</li>
+                <li><strong>Step 2</strong>: Identify all candidate movies — the full catalog of movies that the user has NOT rated in training.</li>
+                <li><strong>Step 3</strong>: For each candidate movie, use the trained SVD model to predict the user's rating using:
+                    <div class="formula">
+                        r_pred = &mu; + b_u + b_i + p_u<sup>T</sup> q_i
+                    </div>
+                </li>
+                <li><strong>Step 4</strong>: Sort all candidate movies by predicted rating in descending order.</li>
+                <li><strong>Step 5</strong>: Return the Top-10 highest predicted movies as the recommendation list.</li>
+                <li><strong>Step 6</strong>: For MAP@10 evaluation, check each recommended movie against the test set — a movie is relevant if the user's actual rating &ge; 3.5.</li>
+            </ul>
+
             <table class="table table-striped table-bordered text-center">
                 <thead>
                     <tr>

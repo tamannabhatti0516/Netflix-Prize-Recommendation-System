@@ -1,4 +1,4 @@
-# 🎬 Netflix Prize Recommendation System
+# 🎬 Netflix Recommendation System
 **Cult Open Projects 2026 — Problem Statement 1**
 
 A complete, end-to-end personalized movie recommendation engine built on the Netflix Prize Dataset (100M+ ratings). Implements SVD Matrix Factorization, User-Based CF, Item-Based CF, and Neural Collaborative Filtering with a fully interactive Streamlit dashboard.

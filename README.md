@@ -46,6 +46,11 @@ python generate_report.py
 python generate_presentation.py
 ```
 
+### 5. Dataset
+The Netflix Prize dataset is not included due to size (>4GB).
+Download from: https://www.kaggle.com/datasets/netflix-inc/netflix-prize-data
+Extract all files to ./data/raw/
+
 ## Project Structure
 ```
 netflix-recommendation-system/

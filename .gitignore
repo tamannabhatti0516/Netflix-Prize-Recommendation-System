@@ -1,0 +1,23 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IPynb Checkpoints
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# Data directories (huge Netflix datasets)
+data/
+netflix-recommendation-system/data/
+
+# Model checkpoints and pickled models
+models/*.pkl
+models/*.pt
+netflix-recommendation-system/models/
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store

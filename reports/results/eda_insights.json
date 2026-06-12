@@ -1,0 +1,13 @@
+{
+  "total_ratings_sampled": 4999999,
+  "unique_users": 427949,
+  "unique_movies": 17735,
+  "sparsity_pct": 99.9341,
+  "mean_rating": 3.6043,
+  "median_rating": 4.0,
+  "std_rating": 1.0852,
+  "date_range_start": "1999-11-11 00:00:00",
+  "date_range_end": "2005-12-31 00:00:00",
+  "users_with_lt5_ratings_pct": 41.93,
+  "movies_with_lt100_ratings_pct": 70.49
+}

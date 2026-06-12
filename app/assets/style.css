@@ -1,0 +1,56 @@
+/* Netflix Dark Theme Custom CSS */
+
+.stApp {
+    background-color: #141414;
+    color: #ffffff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Metric Cards styling */
+.metric-card {
+    background: #1f1f1f;
+    border-left: 5px solid #E50914;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Headings color */
+h1, h2, h3, h4, h5, h6 {
+    color: #E50914 !important;
+}
+
+/* Custom button hover effects */
+.stButton>button {
+    background-color: #E50914 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 4px !important;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.stButton>button:hover {
+    background-color: #B20710 !important;
+    color: white !important;
+}
+
+/* DataFrame backgrounds */
+.stDataFrame {
+    background-color: #1f1f1f;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+/* Text elements custom formatting */
+.stMarkdown p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.stCaption {
+    color: #aaaaaa !important;
+    font-style: italic;
+}

@@ -16,7 +16,7 @@ A complete, end-to-end personalized movie recommendation engine built on the Net
 
 ### 1. Clone and install
 ```bash
-git clone (https://github.com/tamannabhatti0516/Netflix-Prize-Recommendation-System.git)
+git clone https://github.com/tamannabhatti0516/Netflix-Prize-Recommendation-System.git
 cd netflix-recommendation-system
 pip install -r requirements.txt
 ```

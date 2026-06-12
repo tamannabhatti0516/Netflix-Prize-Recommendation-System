@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Netflix Prize Personalized Recommendation System — Technical Report</title>
+    <title>Netflix Prize Recommendation System — Technical Report</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -100,7 +100,7 @@
         <div class="meta-info mt-4">
             <p class="mb-1"><strong>Submission Category</strong>: Problem Statement 1 — Netflix Prize</p>
             <p class="mb-1"><strong>Academic / Competition Platform</strong>: Cult Open Projects 2026</p>
-            <p class="mb-0"><strong>Author</strong>: Senior Machine Learning Engineer</p>
+            <p class="mb-0"><strong>Author</strong>: Tamanna(23323043) , Rajlaxmi(23112082)</p>
         </div>
     </div>
 
@@ -209,19 +209,6 @@
             <p>
                 We evaluate all models on identical train-test splits. To assess recommendation list ranking, we evaluate Mean Average Precision at K (MAP@10) where a movie is defined as relevant if its actual rating is &ge; 3.5. Already seen training movies are excluded from candidates.
             </p>
-
-            <div class="highlight-box">
-                <h5>Understanding MAP@10 Results & Test Set Sparsity</h5>
-                <p>
-                    While the Root Mean Squared Error (RMSE) shows high prediction accuracy (with SVD achieving 0.9626), the MAP@10 scores for all models appear low. This is not due to model failure, but is a direct consequence of the <strong>temporal split's sparsity</strong>:
-                </p>
-                <ul>
-                    <li><strong>Sparse Test Sets</strong>: The strict temporal split results in users having an average of only <strong>3.68 ratings</strong> in the test set.</li>
-                    <li><strong>Limited Relevant Items</strong>: The average number of relevant items (rating &ge; 3.5) per user in the test set is only <strong>2.72</strong>.</li>
-                    <li><strong>Single Rating Bias</strong>: A large subset of <strong>48,993 users</strong> have exactly <strong>1 test rating</strong> in the test set.</li>
-                    <li><strong>Theoretical Limitation</strong>: With so few positive items to hit, the maximum achievable MAP@10 is mathematically limited, as we recommend 10 movies out of over 12,000 unseen candidates. Despite this sparsity, <strong>SVD still achieves the best MAP@10 of 0.0102</strong> among all models, with NCF showing a neural collaborative filtering performance of 0.0006.</li>
-                </ul>
-            </div>
 
             <table class="table table-striped table-bordered text-center">
                 <thead>

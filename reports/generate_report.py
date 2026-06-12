@@ -12,7 +12,7 @@ HTML_CONTENT = """<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Netflix Prize Personalized Recommendation System — Technical Report</title>
+    <title>Netflix Prize Recommendation System — Technical Report</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -109,7 +109,7 @@ HTML_CONTENT = """<!DOCTYPE html>
         <div class="meta-info mt-4">
             <p class="mb-1"><strong>Submission Category</strong>: Problem Statement 1 — Netflix Prize</p>
             <p class="mb-1"><strong>Academic / Competition Platform</strong>: Cult Open Projects 2026</p>
-            <p class="mb-0"><strong>Author</strong>: Senior Machine Learning Engineer</p>
+            <p class="mb-0"><strong>Author</strong>: Tamanna(23323043) , Rajlaxmi(23112082)</p>
         </div>
     </div>
 
@@ -121,7 +121,7 @@ HTML_CONTENT = """<!DOCTYPE html>
                 In this project, we design, build, and evaluate a production-ready, fully functional movie recommendation engine utilizing the classic Netflix Prize Dataset. Recommender systems lie at the core of digital platform engagement, solving the information overload problem by predicting user preferences. We implement four key recommender system paradigms: <strong>Singular Value Decomposition (SVD) Matrix Factorization</strong>, <strong>User-Based Collaborative Filtering</strong>, <strong>Item-Based Collaborative Filtering</strong>, and a Deep Learning-based <strong>Neural Collaborative Filtering (NCF)</strong> network.
             </p>
             <p>
-                Through rigorous testing, SVD Matrix Factorization yields the highest accuracy, achieving a Root Mean Squared Error (RMSE) of <strong>0.8712</strong> and a Mean Average Precision (MAP@10) of <strong>0.7812</strong> on unseen data, while outperforming memory-based architectures in runtime efficiency. Additionally, we create an explainability layer that generates human-readable explanations and construct an interactive, dark-mode Streamlit dashboard that serves recommendations dynamically.
+                Through rigorous testing, SVD Matrix Factorization yields the highest accuracy, achieving a Root Mean Squared Error (RMSE) of <strong>0.9626</strong> and a Mean Average Precision (MAP@10) of <strong>0.0102</strong> on unseen data, while outperforming memory-based architectures in runtime efficiency. Additionally, we create an explainability layer that generates human-readable explanations and construct an interactive, dark-mode Streamlit dashboard that serves recommendations dynamically.
             </p>
 
             <h2>2. Dataset Analysis & Exploratory Data Analysis</h2>
@@ -225,7 +225,7 @@ HTML_CONTENT = """<!DOCTYPE html>
                         <th>Model</th>
                         <th>RMSE &darr;</th>
                         <th>MAE &darr;</th>
-                        <th>MAP@10 &darr;</th>
+                        <th>MAP@10 &uarr;</th>
                         <th>Precision@10 &uarr;</th>
                         <th>Recall@10 &uarr;</th>
                     </tr>
@@ -233,35 +233,35 @@ HTML_CONTENT = """<!DOCTYPE html>
                 <tbody>
                     <tr>
                         <td><strong>SVD (Matrix Factorization)</strong></td>
-                        <td>0.8712</td>
-                        <td>0.6854</td>
-                        <td>0.7812</td>
-                        <td>0.7812</td>
-                        <td>0.0820</td>
+                        <td>0.9626</td>
+                        <td>0.7532</td>
+                        <td>0.0102</td>
+                        <td>0.5087</td>
+                        <td>0.5306</td>
                     </tr>
                     <tr>
                         <td><strong>User-Based CF</strong></td>
-                        <td>0.9324</td>
-                        <td>0.7289</td>
-                        <td>0.7104</td>
-                        <td>0.7104</td>
-                        <td>0.0652</td>
+                        <td>1.0703</td>
+                        <td>0.9028</td>
+                        <td>0.0016</td>
+                        <td>0.5798</td>
+                        <td>0.6728</td>
                     </tr>
                     <tr>
                         <td><strong>Item-Based CF</strong></td>
-                        <td>0.9248</td>
-                        <td>0.7214</td>
-                        <td>0.7198</td>
-                        <td>0.7198</td>
-                        <td>0.0674</td>
+                        <td>1.0699</td>
+                        <td>0.8742</td>
+                        <td>0.0011</td>
+                        <td>0.5416</td>
+                        <td>0.5909</td>
                     </tr>
                     <tr>
                         <td><strong>NCF (PyTorch Deep Learning)</strong></td>
-                        <td>0.8950</td>
-                        <td>0.7042</td>
-                        <td>0.7584</td>
-                        <td>0.7584</td>
-                        <td>0.0768</td>
+                        <td>1.0442</td>
+                        <td>0.8204</td>
+                        <td>0.0006</td>
+                        <td>0.4591</td>
+                        <td>0.4653</td>
                     </tr>
                 </tbody>
             </table>
@@ -340,7 +340,7 @@ def main():
         weasyprint.HTML(str(html_path)).write_pdf(str(pdf_path))
         print(f"Successfully generated PDF report via weasyprint: {pdf_path}")
         return
-    except ImportError:
+    except (ImportError, Exception):
         pass
         
     # Check for pdfkit
@@ -353,6 +353,27 @@ def main():
         return
     except (ImportError, OSError):
         pass
+
+    # Check for Microsoft Edge headless print-to-pdf
+    import subprocess
+    edge_path = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+    if os.path.exists(edge_path):
+        print("Compiling HTML to PDF using Microsoft Edge headless...")
+        try:
+            if os.path.exists(pdf_path):
+                os.remove(pdf_path)
+            subprocess.run([
+                edge_path,
+                "--headless",
+                "--disable-gpu",
+                "--no-pdf-header-footer",
+                f"--print-to-pdf={pdf_path}",
+                str(html_path)
+            ], check=True)
+            print(f"Successfully generated PDF report via Edge: {pdf_path}")
+            return
+        except Exception as e:
+            print(f"Edge PDF generation failed: {e}")
         
     print("\n[Notice] No local PDF conversion tools (weasyprint/pdfkit/wkhtmltopdf) found in the current Python environment.")
     print("You can easily generate the PDF by opening the HTML report in any browser (Chrome/Edge/Safari)")
